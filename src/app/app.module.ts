@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { NgChartsModule } from 'ng2-charts';
     MatTableModule,
     MatInputModule,
     MatPaginatorModule,
+    MatProgressSpinnerModule,
     MatSortModule,
     FormsModule,
     HttpClientModule,

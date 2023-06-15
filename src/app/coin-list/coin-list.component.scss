@@ -72,6 +72,10 @@ th {
   padding-block: 15px;
 }
 
-.table-row {
+tr.table-row {
   cursor: pointer;
+
+  &:hover {
+    background-color: #007bff;
+  }
 }

@@ -15,6 +15,8 @@ import { CurrencyService } from '../service/currency.service';
 export class CoinListComponent implements OnInit {
   bannerData: any = [];
 
+  isLoading = false;
+
   currency: string = 'EUR';
   dataSource: MatTableDataSource<any>;
   displayedColumns: string[] = [
@@ -33,8 +35,10 @@ export class CoinListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    /*
     this.getBannerData();
     this.getAllData();
+    */
     this.currencyService.getCurrency().subscribe((val) => {
       this.currency = val;
       this.getAllData();
@@ -44,17 +48,21 @@ export class CoinListComponent implements OnInit {
 
   getBannerData() {
     this.api.getTrendingCurrency(this.currency).subscribe((res) => {
-      console.log(res);
       this.bannerData = res;
     });
   }
 
   getAllData() {
-    this.api.getCurrency(this.currency).subscribe((res) => {
-      this.dataSource = new MatTableDataSource(res);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-    });
+    this.isLoading = true;
+    this.api.getCurrency(this.currency).subscribe(
+      (res) => {
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.isLoading = false;
+      },
+      (error) => (this.isLoading = false)
+    );
   }
 
   applyFilter(event: Event) {

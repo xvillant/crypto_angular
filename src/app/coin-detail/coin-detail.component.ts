@@ -15,17 +15,20 @@ export class CoinDetailComponent implements OnInit {
   coinId: string;
   days: number = 30;
   currency: string = 'EUR';
+
+  daysList = [1, 30, 90, 365];
+
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
       {
         data: [],
         label: `Price Trends`,
         backgroundColor: 'rgba(148,159,177,0.2)',
-        borderColor: '#009688',
-        pointBackgroundColor: '#009688',
-        pointBorderColor: '#009688',
-        pointHoverBackgroundColor: '#009688',
-        pointHoverBorderColor: '#009688',
+        borderColor: '#007bff',
+        pointBackgroundColor: '#007bff',
+        pointBorderColor: '#007bff',
+        pointHoverBackgroundColor: '#007bff',
+        pointHoverBorderColor: '#007bff',
       },
     ],
     labels: [],
@@ -52,8 +55,10 @@ export class CoinDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((val) => (this.coinId = val['id']));
+    /*
     this.getCoinData();
     this.getGraphData(this.days);
+    */
     this.currencyService.getCurrency().subscribe((val) => {
       this.currency = val;
       this.getGraphData(this.days);
@@ -88,7 +93,7 @@ export class CoinDetailComponent implements OnInit {
               ? `${date.getHours() - 12} : ${date.getMinutes()} PM`
               : `${date.getHours()} : ${date.getMinutes()} AM`;
 
-          return this.days === 1 ? time : date.toLocaleDateString();
+          return days === 1 ? time : date.toLocaleDateString();
         });
       });
   }
