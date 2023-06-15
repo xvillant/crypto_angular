@@ -1,0 +1,13 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar-title {
+  cursor: pointer;
+  font-weight: 800;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: #007bff;
+  }
+}

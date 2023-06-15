@@ -51,13 +51,12 @@
   font-size: 18px;
   border: 1px solid #fff;
   width: 23%;
-}
+  transition: all 0.2s ease-in-out;
 
-.btn-custom:focus {
-  background: #007bff;
-  font-weight: 700;
-  font-size: 18px;
-  border: 1px solid #007bff;
+  &:hover {
+    font-weight: 700;
+    border: 1px solid #023367;
+  }
 }
 
 * {

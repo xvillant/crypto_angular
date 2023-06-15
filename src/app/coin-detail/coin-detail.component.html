@@ -1,49 +1,96 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3 details">
+    <div *ngIf="!isLoadingDetails" class="col-md-3 details">
       <div class="img">
-        <img [src]="coinData?.image.large" alt="" />
-        <h3 class="text-center" style="font-size: 23px">
+        <img [src]="coinData?.image.small" alt="" />
+        <h3 class="text-center" style="font-size: 24px; margin-top: 5px">
           {{ coinData?.name }}
         </h3>
-        <h2 [innerHTML]="coinData?.description?.en.split('. ')[0]"></h2>
+        <h2
+          style="font-size: 20px"
+          [innerHTML]="coinData?.description?.en.split('. ')[0]"
+        ></h2>
         <div class="more-detail">
-          <span class="title">Rank: </span>
-          <span class="value">{{ coinData?.market_cap_rank }}</span
+          <span class="title text-primary" style="font-size: 22px">Rank: </span>
+          <span class="value" style="font-size: 18px">{{
+            coinData?.market_cap_rank
+          }}</span
           ><br />
-          <span class="title">Current price: </span>
-          <span class="value">{{
+          <span class="title text-primary" style="font-size: 22px"
+            >Current price:
+          </span>
+          <span class="value" style="font-size: 18px">{{
             coinData?.market_data.current_price.eur | currency : currency
           }}</span
           ><br />
-          <span class="title">Market cap: </span>
-          <span class="value">{{
+          <span class="title text-primary" style="font-size: 22px"
+            >Market cap:
+          </span>
+          <span class="value" style="font-size: 18px">{{
             coinData?.market_data.market_cap.eur | currency : currency
           }}</span>
         </div>
       </div>
     </div>
-    <div class="col-md-8">
+    <div
+      *ngIf="isLoadingDetails"
+      class="col-md-3"
+      style="display: grid; place-items: center"
+    >
+      <mat-spinner color="primary" diameter="70"></mat-spinner>
+    </div>
+    <div *ngIf="!isLoadingGraph" class="col-md-8">
       <canvas
         baseChart
         [data]="lineChartData"
         [options]="lineChartOptions"
         [type]="lineChartType"
       ></canvas>
-      <div class="d-flex justify-content-around">
-        <button (click)="getGraphData(1)" class="btn btn-custom">
+      <div class="d-flex justify-content-around" style="margin-top: 20px">
+        <button
+          [ngStyle]="{
+            backgroundColor: days === 1 ? '#007bff' : 'transparent'
+          }"
+          (click)="getGraphData(1)"
+          class="btn btn-custom"
+        >
           24 hours
         </button>
-        <button (click)="getGraphData(30)" class="btn btn-custom">
+        <button
+          [ngStyle]="{
+            backgroundColor: days === 30 ? '#007bff' : 'transparent'
+          }"
+          (click)="getGraphData(30)"
+          class="btn btn-custom"
+        >
           30 days
         </button>
-        <button (click)="getGraphData(90)" class="btn btn-custom">
+        <button
+          [ngStyle]="{
+            backgroundColor: days === 90 ? '#007bff' : 'transparent'
+          }"
+          (click)="getGraphData(90)"
+          class="btn btn-custom"
+        >
           90 days
         </button>
-        <button (click)="getGraphData(365)" class="btn btn-custom">
+        <button
+          [ngStyle]="{
+            backgroundColor: days === 365 ? '#007bff' : 'transparent'
+          }"
+          (click)="getGraphData(365)"
+          class="btn btn-custom"
+        >
           1 year
         </button>
       </div>
+    </div>
+    <div
+      *ngIf="isLoadingGraph"
+      class="col-md-8"
+      style="display: grid; place-items: center"
+    >
+      <mat-spinner color="primary" diameter="50"></mat-spinner>
     </div>
   </div>
 </div>

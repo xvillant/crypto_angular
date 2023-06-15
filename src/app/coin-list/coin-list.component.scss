@@ -1,5 +1,5 @@
 .header {
-  height: 40%;
+  height: 20%;
   display: flex;
   text-align: center;
   flex-direction: column;
@@ -8,8 +8,7 @@
   h2 {
     font-weight: bold;
     margin-bottom: 15px;
-    font-size: 3.75rem;
-    line-height: 1.2;
+    font-size: 3rem;
     letter-spacing: -0.0083em;
   }
   h6 {
@@ -24,7 +23,8 @@
 
 .banner {
   background-image: url("../../assets/banner2.jpg");
-  height: 400px;
+  background-repeat: no-repeat;
+  height: 250px;
   width: 100%;
 }
 
@@ -36,24 +36,27 @@
 
 .card {
   border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   background: transparent;
   color: #fff;
-  padding: 10px;
-  margin: 40px;
   width: 100px;
-  height: 200px;
+  height: 100px;
+
   img {
-    width: 70px;
-    margin: 0 auto;
+    width: 50px;
   }
   h5 {
     font-weight: 500;
+    font-size: 14px;
   }
   p {
     font-weight: 700;
   }
   span {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
@@ -67,9 +70,10 @@ table {
 }
 
 td,
-th {
+th,
+tr {
   width: 25%;
-  padding-block: 15px;
+  padding-block: 10px;
 }
 
 tr.table-row {
@@ -78,4 +82,9 @@ tr.table-row {
   &:hover {
     background-color: #007bff;
   }
+}
+
+tr.table-header {
+  background-color: #004691;
+  height: 80px;
 }
