@@ -18,9 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoinListComponent } from './coin-list/coin-list.component';
 import { CoinDetailComponent } from './coin-detail/coin-detail.component';
 import { NgChartsModule } from 'ng2-charts';
+import { CoinHeaderComponent } from './coin-header/coin-header.component';
 
 @NgModule({
-  declarations: [AppComponent, CoinListComponent, CoinDetailComponent],
+  declarations: [AppComponent, CoinListComponent, CoinDetailComponent, CoinHeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

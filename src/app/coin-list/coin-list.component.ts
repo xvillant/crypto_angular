@@ -13,10 +13,7 @@ import { CurrencyService } from '../service/currency.service';
   styleUrls: ['./coin-list.component.scss'],
 })
 export class CoinListComponent implements OnInit {
-  bannerData: any = [];
-
   isLoading = false;
-
   currency: string = 'EUR';
   dataSource: MatTableDataSource<any>;
   displayedColumns: string[] = [
@@ -35,20 +32,9 @@ export class CoinListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    /*
-    this.getBannerData();
-    this.getAllData();
-    */
     this.currencyService.getCurrency().subscribe((val) => {
       this.currency = val;
       this.getAllData();
-      this.getBannerData();
-    });
-  }
-
-  getBannerData() {
-    this.api.getTrendingCurrency(this.currency).subscribe((res) => {
-      this.bannerData = res;
     });
   }
 

@@ -1,0 +1,59 @@
+.banner {
+  background-image: url("../../assets/banner2.jpg");
+  background-repeat: no-repeat;
+  height: 250px;
+  width: 100%;
+
+  .header {
+    height: 20%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    h2 {
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 3rem;
+      letter-spacing: -0.0083em;
+    }
+    h6 {
+      color: darkgray;
+      text-transform: capitalize;
+      font-size: 0.8rem;
+      font-weight: 500;
+      line-height: 1.57;
+      letter-spacing: 0.00714em;
+    }
+  }
+
+  .sub-header {
+    display: flex;
+    align-items: center;
+  }
+
+  .card {
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: transparent;
+    color: #fff;
+
+    img {
+      width: 50px;
+    }
+    h5 {
+      font-weight: 500;
+      font-size: 14px;
+    }
+    p {
+      font-weight: 700;
+    }
+    span {
+      font-size: 10px;
+      font-weight: 500;
+    }
+  }
+}
