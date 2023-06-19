@@ -66,26 +66,27 @@ export class CoinDetailComponent implements OnInit {
 
   getCoinData() {
     this.isLoadingDetails = true;
-    this.api.getCurrencyById(this.coinId).subscribe(
-      (res) => {
+    this.api.getCurrencyById(this.coinId).subscribe({
+      next: (res) => {
         if (this.currency === 'USD') {
           res.market_data.current_price.eur = res.market_data.current_price.usd;
           res.market_data.market_cap.eur = res.market_data.market_cap.usd;
         }
-        console.log(res);
         this.coinData = res;
         this.isLoadingDetails = false;
       },
-      (error) => (this.isLoadingDetails = false)
-    );
+      error: (err) => {
+        this.isLoadingDetails = false;
+      },
+    });
   }
 
   getGraphData(days: number) {
     this.isLoadingGraph = true;
     this.api
       .getGraphicalCurrencyData(this.coinId, this.currency, days)
-      .subscribe(
-        (res) => {
+      .subscribe({
+        next: (res) => {
           setTimeout(() => {
             this.myLineChart.chart?.update();
           }, 200);
@@ -104,7 +105,9 @@ export class CoinDetailComponent implements OnInit {
           });
           this.isLoadingGraph = false;
         },
-        (error) => (this.isLoadingGraph = false)
-      );
+        error: (err) => {
+          this.isLoadingGraph = false;
+        },
+      });
   }
 }

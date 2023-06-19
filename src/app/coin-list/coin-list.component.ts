@@ -40,15 +40,17 @@ export class CoinListComponent implements OnInit {
 
   getAllData() {
     this.isLoading = true;
-    this.api.getCurrency(this.currency).subscribe(
-      (res) => {
+    this.api.getCurrency(this.currency).subscribe({
+      next: (res) => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         this.isLoading = false;
       },
-      (error) => (this.isLoading = false)
-    );
+      error: (err) => {
+        this.isLoading = false;
+      },
+    });
   }
 
   applyFilter(event: Event) {
